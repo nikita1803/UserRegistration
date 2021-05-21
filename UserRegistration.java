@@ -1,5 +1,6 @@
 package userregistration;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,17 +31,45 @@ public class UserRegistration
 	}
 	/**
 	 * email is a function checks the email validity
-	 * there are 3 mandatory  field abc , bridglabz , co
-	 * two optional field   
+	 * check the sample email valid or invalid 
+	 *    
 	 */
 	public static void email()
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Email");
-		String email = sc.nextLine();
-		String regex = "^[abc](.+)[A-Za-z+_.-]+@[bridgelabz](.+)[co](.+)[A-Za-z]$";
-		System.out.println("The email is: " + email);
-	    System.out.println("Check the email is correct? " + email.matches(regex));
+		ArrayList<String> email = new ArrayList<String>(); 
+		 email.add("abc@yahoo.com");
+		 email.add("abc-100@yahoo.com");
+		 email.add("abc.100@yahoo.com");
+		 email.add("abc111@abc.com");
+		 email.add("abc-100@abc.net");
+		 email.add("abc.100@abc.com.au");
+		 email.add("abc@1.com");
+		 email.add("abc@gmail.com");
+		 email.add("abc@gmail.com.com");
+		 email.add("abc+100@gmail.com");
+		 
+		 email.add("abc");
+		 email.add("abc@.com.my");
+		 email.add("abc123@gmail.a");
+		 email.add("abc123@.com");
+		 email.add("abc123@.com.com");
+		 email.add(".abc@abc.com");
+		 email.add("abc()*@gmail.com");
+		 email.add("abc@%*.com");
+		 email.add("abc..2002@gmail.com");
+		 email.add("abc.@gmail.com");
+		 email.add("abc@abc@gmail.com");
+		 email.add("abc@gmail.com.1a");
+		 email.add("abc@gmail.com.aa.au");
+		 String regex = "^[0-9A-Za-z]+(([._+-]{0,1})[0-9A-Za-z]+)*@[0-9A-Za-z]+.[a-z]{2,4}.([a-z]{2,3})*$";
+		 //System.out.println("The email is: " + email);
+		 Pattern p = Pattern.compile(regex);
+		 
+		 for(String emails : email) 
+		 {    
+		     Matcher matcher = p.matcher(emails);  
+		     System.out.println(email +" : "+ matcher.matches()+"\n");  
+	     } 
 	}
 	/**
 	 * mobileNumValidation is a function to check the valid mobile number
