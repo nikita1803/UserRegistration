@@ -48,13 +48,32 @@ public class UserRegistration
 	 * @return the boolean value either true or false
 	 * checking the country code  and 10 digit number must be there
 	 */
-	public static boolean mobileNumValidation(String mobileNum) {
+	public static boolean mobileNumValidation(String mobileNum) 
+	{
 		String mobileNumber = "^[9][1]\\s[6-9]{1}[0-9]{9}$";
 		Pattern p = Pattern.compile(mobileNumber);
-		if ( mobileNumber == null ){
+		if ( mobileNumber == null )
+		{
 			return false;
 		}
 		Matcher m = p.matcher(mobileNum);
+		
+		return m.matches();
+	}
+	/**
+	 * passwordValidation is a function to check password validation
+	 * @param password
+	 * @return boolean value 
+	 * password validation part 1 is enter minimum 8 characters
+	 */
+	public static boolean passwordValidation(String password) 
+	{
+		String regex = "^[a-z A-z]{8,}$";
+		Pattern p = Pattern.compile(regex);
+		if ( password == null ){
+			return false;
+		}
+		Matcher m = p.matcher(password);
 		
 		return m.matches();
 	}
@@ -77,5 +96,8 @@ public class UserRegistration
 		System.out.print("Enter the your Mobile Number : ");
 		String mNumber = sc.nextLine();	 
 	    System.out.println(mobileNumValidation(mNumber));
+	    System.out.print("Enter the your Password : ");
+		String password = sc.nextLine();	 
+	    System.out.println(passwordValidation(password));
 	}
 }
