@@ -43,9 +43,26 @@ public class UserRegistration
 	    System.out.println("Check the email is correct? " + email.matches(regex));
 	}
 	/**
+	 * mobileNumValidation is a function to check the valid mobile number
+	 * @param mobileNum
+	 * @return the boolean value either true or false
+	 * checking the country code  and 10 digit number must be there
+	 */
+	public static boolean mobileNumValidation(String mobileNum) {
+		String mobileNumber = "^[9][1]\\s[6-9]{1}[0-9]{9}$";
+		Pattern p = Pattern.compile(mobileNumber);
+		if ( mobileNumber == null ){
+			return false;
+		}
+		Matcher m = p.matcher(mobileNum);
+		
+		return m.matches();
+	}
+	/**
 	 * in main method taking the input from the user to validate
 	 * calling the function to perform.
 	 */
+	
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome in User Registration");
@@ -56,7 +73,9 @@ public class UserRegistration
 	    System.out.print("Enter the your Last Name : ");
 		String lname = sc.nextLine();	 
 	    System.out.println(usernameValidation(lname));
-	    
 		email();
+		System.out.print("Enter the your Mobile Number : ");
+		String mNumber = sc.nextLine();	 
+	    System.out.println(mobileNumValidation(mNumber));
 	}
 }
