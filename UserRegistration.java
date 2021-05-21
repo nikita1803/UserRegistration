@@ -67,10 +67,11 @@ public class UserRegistration
 	 * password validation part 1 is enter minimum 8 characters
 	 * password validation part 2 is  having minimum 1 upper case character.
 	 * password validation part 3 is having minimum 1 numeric value.
+	 * password validation part 4 is having exactly 1 special character.
 	 */
 	public static boolean passwordValidation(String password) 
 	{
-		String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+		String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()]).{8,}$";
 		Pattern p = Pattern.compile(regex);
 		if ( password == null ){
 			return false;
